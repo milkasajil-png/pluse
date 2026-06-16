@@ -15,15 +15,29 @@ Pulse lets students browse upcoming campus events (concerts, sports fixtures, ta
 
 ## Team / Roles
 
-| Name | Role |
-|---|---|
-| Jane Doe | Project Lead & Frontend Developer |
-| Tunde Bakare | UI Designer |
-| Amaka Eze | Frontend Developer |
-| Chidi Okafor | Content Lead |
-| Fatima Yusuf | QA & Documentation |
+| Name                   | Role                | ID Number       | Email                     |
+| ---------------------- | ------------------- | --------------- | ------------------------- |
+| Hauwa Ahmed            | Content Lead        | DL/IMT/23D/0126 | Not provided              |
+| Saidu Abubakar         | Content Lead        | DL/IMT/23D/0127 | saiduabubakar@gmail.com   |
+| Hauwa Usman            | UI Designer         | DL/IMT/23D/0140 | hauwausman646@gmail.com   |
+| Umar Yahaya Mohammed   | Content Lead        | DL/IMT/23D/0151 | zayeedumar@gmail.com      |
+| Talatu Umoru           | Content Lead        | DL/IMT/21U/0110 | talatuumoru761@gmail.com  |
+| Safiya Ndottiwa Misawa | Project Contributor | DL/IMT/23D/0134 | safiyamisawa247@gmail.com |
+| Sajil Sani             | Team Member         | DL/IMT/23D/0120 | milkasajil@gmail.com      |
+| Yahaya Daniel          | Frontend Developer  | DL/IMT/21U/0096 | +234 813 410 3583         |
 
-> Replace the names, IDs, programmes, bios, and photo placeholders in `team.html` with your actual group members before submission. Each photo placeholder has a comment showing how to swap in `images/yourphoto.jpg`.
+## Team Photos
+
+The team member photos are located in the `images/` folder:
+
+- `hauwa-ahamed.jpeg`
+- `saidu-abubakar.jpeg`
+- `hauwa-usman.jpeg`
+- `uamr-yahaya.jpeg`
+- `talatu.jpeg`
+- `safiya.jpeg`
+- `sajil.jpeg`
+- `yahya-daniel.jpeg`
 
 ## Technologies Used
 

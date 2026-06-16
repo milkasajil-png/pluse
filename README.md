@@ -1,97 +1,60 @@
 # Pulse — Campus Event Ticketing Platform
 
-A static event management and ticketing website built for the IMT 405 Web Application Development capstone project (Option A: HTML, CSS, and JavaScript only — no frameworks).
+## Project Description
 
-## Description
+Pulse is a static event management and ticketing website built for the IMT 405 Web Application Development capstone project. The platform allows students to browse upcoming campus events (concerts, sports fixtures, talks, community events), search and filter by category, and "book" tickets through an interactive checkout system that generates booking references — all implemented using vanilla HTML, CSS, and JavaScript without any frameworks.
 
-Pulse lets students browse upcoming campus events (concerts, sports fixtures, talks, community events), search and filter by category, and "book" tickets through an interactive checkout that confirms a booking reference — all without a backend, using vanilla JavaScript.
+## Team Members and Roles
 
-## Pages
-
-- **Home (`index.html`)** — landing page, hero, featured events, how-it-works steps, FAQ accordion.
-- **Events (`events.html`)** — event listing, search and filters, ticket booking, and event management controls.
-- **Meet the Team (`team.html`)** — group member profiles (name, ID number, level, programme, photo, role, bio).
-- **Contact (`contact.html`)** — contact form with client-side validation and contact details.
-
-## Team / Roles
-
-| Name                   | Role                | ID Number       | Email                     |
-| ---------------------- | ------------------- | --------------- | ------------------------- |
-| Hauwa Ahmed            | Content Lead        | DL/IMT/23D/0126 | Not provided              |
-| Saidu Abubakar         | Content Lead        | DL/IMT/23D/0127 | saiduabubakar@gmail.com   |
-| Hauwa Usman            | UI Designer         | DL/IMT/23D/0140 | hauwausman646@gmail.com   |
-| Umar Yahaya Mohammed   | Content Lead        | DL/IMT/23D/0151 | zayeedumar@gmail.com      |
-| Talatu Umoru           | Content Lead        | DL/IMT/21U/0110 | talatuumoru761@gmail.com  |
-| Safiya Ndottiwa Misawa | Project Contributor | DL/IMT/23D/0134 | safiyamisawa247@gmail.com |
-| Sajil Sani             | Team Member         | DL/IMT/23D/0120 | milkasajil@gmail.com      |
-| Yahaya Daniel          | Frontend Developer  | DL/IMT/21U/0096 | +234 813 410 3583         |
-
-## Team Photos
-
-The team member photos are located in the `images/` folder:
-
-- `hauwa-ahamed.jpeg`
-- `saidu-abubakar.jpeg`
-- `hauwa-usman.jpeg`
-- `uamr-yahaya.jpeg`
-- `talatu.jpeg`
-- `safiya.jpeg`
-- `sajil.jpeg`
-- `yahya-daniel.jpeg`
+| Name                   | Role                | ID Number       |
+| ---------------------- | ------------------- | --------------- |
+| Hauwa Ahmed            | Content Lead        | DL/IMT/23D/0126 |
+| Saidu Abubakar         | Content Lead        | DL/IMT/23D/0127 |
+| Hauwa Usman            | UI Designer         | DL/IMT/23D/0140 |
+| Umar Yahaya Mohammed   | Content Lead        | DL/IMT/23D/0151 |
+| Talatu Umoru           | Content Lead        | DL/IMT/21U/0110 |
+| Safiya Ndottiwa Misawa | Project Contributor | DL/IMT/23D/0134 |
+| Sajil Sani             | Team Member         | DL/IMT/23D/0120 |
+| Yahaya Daniel          | Frontend Developer  | DL/IMT/21U/0096 |
 
 ## Technologies Used
 
-- HTML5 (semantic markup)
-- CSS3 (custom properties / design tokens, Flexbox, Grid, responsive media queries)
-- Vanilla JavaScript (DOM manipulation, form validation, search/filter, modal dialogs, accordion)
-- Google Fonts (Oswald, Inter, Roboto Mono)
+- **HTML5** - Semantic markup and page structure
+- **CSS3** - Styling with Flexbox, Grid, responsive design, and custom properties
+- **Vanilla JavaScript** - DOM manipulation, form validation, search/filter functionality, modal dialogs, and accordion components
+- **Google Fonts** - Typography (Oswald, Inter, Roboto Mono)
 
-## Interactive Features
+## Setup/Installation Instructions
 
-1. **Live search + category filters** on the Events page.
-2. **Ticket booking modal** with quantity selector, live total, validation, and a generated booking reference.
-3. **FAQ accordion** on the homepage.
-4. **Responsive navigation** with mobile menu toggle.
-5. **Contact form** with inline validation messages.
-6. **Event CRUD** to add, edit, activate/deactivate, and delete events with browser storage.
+This is a static website that requires no build process or server setup.
 
-## Setup / Installation
+### Method 1: Direct Browser Opening
 
-No build step required.
+1. Download or clone this repository to your local machine
+2. Navigate to the project folder
+3. Open `index.html` in any modern web browser
 
-1. Download or clone this repository.
-2. Open `index.html` in any modern browser, **or**
-3. Serve locally for the best experience:
+### Method 2: Local Server (Recommended)
+
+1. Download or clone this repository
+2. Open terminal/command prompt in the project directory
+3. Start a local server using one of these commands:
+
    ```bash
+   # Using Python 3
    python3 -m http.server 8000
+
+   # Using Python 2
+   python -m SimpleHTTPServer 8000
+
+   # Using Node.js (if you have it installed)
+   npx serve .
    ```
-   then visit `http://localhost:8000`.
 
-## Deployment
+4. Open your browser and visit `http://localhost:8000`
 
-This project is a static site and can be deployed for free on GitHub Pages, Netlify, or Vercel:
+### Browser Requirements
 
-- **GitHub Pages**: push to a repo, enable Pages in repo settings (Settings → Pages → Deploy from branch → `main` → `/root`).
-- **Netlify**: drag-and-drop the project folder into Netlify's deploy interface, or connect the GitHub repo.
-
-## Folder Structure
-
-```
-ticketing/
-├── index.html
-├── events.html
-├── team.html
-├── contact.html
-├── css/
-│   └── style.css
-├── js/
-│   └── main.js
-├── images/        (add team photos here)
-└── README.md
-```
-
-## Notes
-
-- Default event data lives in `js/main.js`; changes made through the Events page are saved in `localStorage`.
-- Ticket "purchases" are simulated client-side (no payment processing); a booking reference is generated for demonstration purposes.
-- Replace placeholder team photos with real photographs of group members before submission, per project requirements.
+- Any modern web browser (Chrome, Firefox, Safari, Edge)
+- JavaScript enabled
+- No additional plugins or extensions required

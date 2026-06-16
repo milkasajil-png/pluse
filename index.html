@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pulse — Find & Book Campus Events</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="nav">
+      <a href="index.html" class="logo"><span class="dot"></span>Pulse</a>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="team.html">Meet the Team</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container hero-inner">
+        <div>
+          <span class="eyebrow">Campus Event Ticketing</span>
+          <h1>Every event on campus, <span>one ticket</span> away.</h1>
+          <p class="lead">Pulse brings together festivals, matches, talks, and community gatherings happening across campus — so you never miss what's next, and never queue at the door.</p>
+          <div class="hero-actions">
+            <a href="events.html" class="btn btn-primary">Browse Events</a>
+            <a href="#how-it-works" class="btn btn-secondary">How it Works</a>
+          </div>
+        </div>
+        <div class="hero-stub" aria-hidden="true">
+          <div class="stub-main">
+            <div class="stub-event">Campus Beats Festival</div>
+            <div class="stub-meta">
+              <div>18 Jul 2026 · 4:00 PM</div>
+              <div>Main Amphitheatre</div>
+              <div>Admit One · ₦1,500</div>
+            </div>
+          </div>
+          <div class="stub-perf"><span>Pulse Pass</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats container">
+      <div class="stat">
+        <div class="num" id="live-event-count">0</div>
+        <div class="label">Live Events</div>
+      </div>
+      <div class="stat">
+        <div class="num" id="category-count">0</div>
+        <div class="label">Categories</div>
+      </div>
+      <div class="stat">
+        <div class="num" id="free-event-count">0</div>
+        <div class="label">Free Events</div>
+      </div>
+      <div class="stat">
+        <div class="num">24/7</div>
+        <div class="label">Online Booking</div>
+      </div>
+    </section>
+
+    <!-- Featured events -->
+    <section class="container">
+      <div class="section-head">
+        <span class="eyebrow">What's On</span>
+        <h2>Coming up next</h2>
+        <p>A look at the most popular events happening soon. Book in seconds — no printing, no queueing.</p>
+      </div>
+      <div class="event-grid" id="featured-events"></div>
+      <div style="text-align:center; margin-top: 36px;">
+        <a href="events.html" class="btn btn-outline">View All Events</a>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="section-alt" id="how-it-works">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">How it Works</span>
+          <h2>Booking in three steps</h2>
+          <p>No account needed. Reserve your spot and show your booking reference at the gate.</p>
+        </div>
+        <div class="steps">
+          <div class="step">
+            <span class="step-num">01</span>
+            <h4>Find an event</h4>
+            <p>Search or filter by category, date, or price to find something happening near you.</p>
+          </div>
+          <div class="step">
+            <span class="step-num">02</span>
+            <h4>Choose your tickets</h4>
+            <p>Select how many tickets you need and review the total before you confirm.</p>
+          </div>
+          <div class="step">
+            <span class="step-num">03</span>
+            <h4>Get your reference</h4>
+            <p>Receive a booking reference instantly. Bring it along — digital or printed — on the day.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="container">
+      <div class="section-head">
+        <span class="eyebrow">FAQ</span>
+        <h2>Good to know</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Is Pulse free to use?
+            <span class="icon-plus">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Yes. Browsing and booking on Pulse is free. Some events charge an entry fee, which is shown on the event card before you book.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Do I need to print my ticket?
+            <span class="icon-plus">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>No. Your booking reference is enough to confirm your reservation at the entrance. You can show it on your phone.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Can I get a refund if I can't attend?
+            <span class="icon-plus">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Refunds depend on the event organiser's policy. Contact us through the form on our Contact page and we'll point you in the right direction.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            How do I suggest an event to be listed?
+            <span class="icon-plus">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Use the contact form to send us the event details and we'll review it for listing on Pulse.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h4>Pulse</h4>
+          <p style="font-size:0.9rem; max-width:320px;">A campus event ticketing platform built to help students discover, book, and attend events without the hassle of queues or printed tickets.</p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="team.html">Meet the Team</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Categories</h4>
+          <ul>
+            <li><a href="events.html?cat=Music">Music</a></li>
+            <li><a href="events.html?cat=Sports">Sports</a></li>
+            <li><a href="events.html?cat=Tech">Tech</a></li>
+            <li><a href="events.html?cat=Community">Community</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Pulse Campus Events. Built for IMT 405 Capstone.</span>
+        <span>Made with HTML, CSS &amp; JavaScript</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Ticket purchase modal -->
+  <div class="modal-overlay" id="ticket-modal">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-event-title">
+      <button class="modal-close" onclick="closeTicketModal()" aria-label="Close dialog">&times;</button>
+      <div id="modal-form">
+        <h3 id="modal-event-title">Event Title</h3>
+        <p class="modal-sub" id="modal-event-sub">Date · Time · Venue</p>
+
+        <div class="qty-row">
+          <div>
+            <div style="font-family:var(--font-mono); font-size:0.75rem; text-transform:uppercase; letter-spacing:0.12em; color:var(--slate);">Price per ticket</div>
+            <div style="font-family:var(--font-display); font-size:1.2rem;" id="modal-unit-price">₦0</div>
+          </div>
+          <div class="qty-controls">
+            <button type="button" onclick="changeQty(-1)" aria-label="Decrease quantity">&minus;</button>
+            <span id="qty-value" style="font-family:var(--font-display); font-size:1.2rem; min-width:24px; text-align:center;">1</span>
+            <button type="button" onclick="changeQty(1)" aria-label="Increase quantity">+</button>
+          </div>
+        </div>
+
+        <form id="ticket-form" onsubmit="submitTicketForm(event)">
+          <div class="field" id="buyer-name-field">
+            <label for="buyer-name">Full name</label>
+            <input type="text" id="buyer-name" name="buyer-name" required>
+            <span class="error">Please enter your name.</span>
+          </div>
+          <div class="field" id="buyer-email-field">
+            <label for="buyer-email">Email address</label>
+            <input type="email" id="buyer-email" name="buyer-email" required>
+            <span class="error">Please enter a valid email address.</span>
+          </div>
+
+          <div class="qty-total">
+            <span>Total</span>
+            <span class="amount" id="qty-total-amount">₦0</span>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width:100%;">Confirm Booking</button>
+        </form>
+      </div>
+
+      <div class="confirm-box" id="modal-confirm">
+        <div class="check">✓</div>
+        <h3>Booking confirmed</h3>
+        <p id="confirm-event-name" style="color:var(--slate); margin-top:8px;"></p>
+        <p class="ref" id="confirm-ref"></p>
+        <button class="btn btn-outline" style="margin-top:20px;" onclick="closeTicketModal()">Done</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script>
+    // Render featured active events and live catalogue totals
+    const featuredGrid = document.getElementById("featured-events");
+    const activeEvents = EVENTS.filter(ev => ev.active !== false);
+    document.getElementById("live-event-count").textContent = activeEvents.length;
+    document.getElementById("category-count").textContent =
+      new Set(activeEvents.map(ev => ev.category)).size;
+    document.getElementById("free-event-count").textContent =
+      activeEvents.filter(ev => ev.price === 0).length;
+
+    activeEvents.slice(0, 3).forEach(ev => {
+      const card = document.createElement("article");
+      card.className = "ticket-card";
+      card.innerHTML = `
+        <div class="card-img">
+          <span class="cat-tag">${escapeHTML(ev.category)}</span>
+          <span class="icon">${escapeHTML(ev.icon)}</span>
+        </div>
+        <div class="card-body">
+          <h3>${escapeHTML(ev.title)}</h3>
+          <div class="card-meta">${formatDate(ev.date)} · ${escapeHTML(ev.time)} · ${escapeHTML(ev.venue)}</div>
+          <p class="card-desc">${escapeHTML(ev.desc)}</p>
+          <div class="card-footer">
+            <span class="price ${ev.price === 0 ? "free" : ""}">${formatNaira(ev.price)}</span>
+            <button class="btn btn-primary" onclick="openTicketModal('${ev.id}')">Get Tickets</button>
+          </div>
+        </div>
+      `;
+      featuredGrid.appendChild(card);
+    });
+
+    // FAQ accordion
+    document.querySelectorAll(".faq-question").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const item = btn.closest(".faq-item");
+        const answer = item.querySelector(".faq-answer");
+        const isOpen = item.classList.toggle("open");
+        btn.setAttribute("aria-expanded", isOpen);
+        answer.style.maxHeight = isOpen ? answer.scrollHeight + "px" : "0px";
+      });
+    });
+  </script>
+</body>
+</html>

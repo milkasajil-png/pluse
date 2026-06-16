@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — Pulse</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="nav">
+      <a href="index.html" class="logo"><span class="dot"></span>Pulse</a>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="team.html">Meet the Team</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="page-hero">
+    <div class="container">
+      <h1>Get in Touch</h1>
+      <p>Questions about an event, a booking, or want your event listed on Pulse? Send us a message.</p>
+    </div>
+  </div>
+
+  <main class="container" style="padding-top:48px; padding-bottom:80px;">
+    <div class="form-grid">
+      <div>
+        <div class="form-success" id="form-success">
+          Thanks — your message has been sent. We'll get back to you within two working days.
+        </div>
+
+        <form id="contact-form" novalidate>
+          <div class="field" id="field-name">
+            <label for="name">Full name</label>
+            <input type="text" id="name" name="name" required>
+            <span class="error">Please enter your name.</span>
+          </div>
+
+          <div class="field" id="field-email">
+            <label for="email">Email address</label>
+            <input type="email" id="email" name="email" required>
+            <span class="error">Please enter a valid email address.</span>
+          </div>
+
+          <div class="field" id="field-subject">
+            <label for="subject">Subject</label>
+            <select id="subject" name="subject" required>
+              <option value="">Select a topic</option>
+              <option value="booking">Booking enquiry</option>
+              <option value="event">List my event</option>
+              <option value="feedback">Feedback</option>
+              <option value="other">Other</option>
+            </select>
+            <span class="error">Please choose a subject.</span>
+          </div>
+
+          <div class="field" id="field-message">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" required></textarea>
+            <span class="error">Please enter a message (at least 10 characters).</span>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Send Message</button>
+        </form>
+      </div>
+
+      <div class="contact-info-card">
+        <h3>Contact Details</h3>
+        <div class="info-item">
+          <span class="info-label">Email</span>
+          hello@pulse-events.example
+        </div>
+        <div class="info-item">
+          <span class="info-label">Phone</span>
+          +234 800 000 0000
+        </div>
+        <div class="info-item">
+          <span class="info-label">Office</span>
+          Student Centre, Room 14, University Campus
+        </div>
+        <div class="info-item">
+          <span class="info-label">Hours</span>
+          Monday – Friday, 9:00 AM – 4:00 PM
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h4>Pulse</h4>
+          <p style="font-size:0.9rem; max-width:320px;">A campus event ticketing platform built to help students discover, book, and attend events without the hassle of queues or printed tickets.</p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="team.html">Meet the Team</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Categories</h4>
+          <ul>
+            <li><a href="events.html?cat=Music">Music</a></li>
+            <li><a href="events.html?cat=Sports">Sports</a></li>
+            <li><a href="events.html?cat=Tech">Tech</a></li>
+            <li><a href="events.html?cat=Community">Community</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Pulse Campus Events. Built for IMT 405 Capstone.</span>
+        <span>Made with HTML, CSS &amp; JavaScript</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    const form = document.getElementById("contact-form");
+    const successBox = document.getElementById("form-success");
+
+    function validateField(id, condition) {
+      const field = document.getElementById("field-" + id);
+      if (condition) {
+        field.classList.remove("invalid");
+        return true;
+      } else {
+        field.classList.add("invalid");
+        return false;
+      }
+    }
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const subject = document.getElementById("subject").value;
+      const message = document.getElementById("message").value.trim();
+
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      const validName = validateField("name", name.length > 0);
+      const validEmail = validateField("email", emailPattern.test(email));
+      const validSubject = validateField("subject", subject !== "");
+      const validMessage = validateField("message", message.length >= 10);
+
+      if (validName && validEmail && validSubject && validMessage) {
+        successBox.classList.add("show");
+        form.reset();
+        successBox.scrollIntoView({ behavior: "smooth", block: "center" });
+      } else {
+        successBox.classList.remove("show");
+      }
+    });
+  </script>
+</body>
+</html>

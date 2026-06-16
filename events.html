@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Events — Pulse</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="nav">
+      <a href="index.html" class="logo"><span class="dot"></span>Pulse</a>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="events.html" class="active">Events</a></li>
+        <li><a href="team.html">Meet the Team</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="page-hero">
+    <div class="container">
+      <h1>All Events</h1>
+      <p>Search by name, filter by category, and book your tickets in a couple of clicks.</p>
+    </div>
+  </div>
+
+  <main class="container" style="padding-top:48px;">
+    <section class="event-manager" aria-labelledby="manager-title">
+      <div class="manager-heading">
+        <div>
+          <span class="eyebrow">Event Management</span>
+          <h2 id="manager-title">Manage Events</h2>
+          <p>Add a new event or update the availability of an existing listing.</p>
+        </div>
+        <button type="button" class="btn btn-primary" id="toggle-event-form">Add Event</button>
+      </div>
+
+      <form id="event-form" class="event-form" hidden>
+        <input type="hidden" id="event-id">
+        <div class="event-form-grid">
+          <div class="field">
+            <label for="event-title">Event title</label>
+            <input type="text" id="event-title" required>
+          </div>
+          <div class="field">
+            <label for="event-category">Category</label>
+            <select id="event-category" required>
+              <option value="">Choose a category</option>
+              <option>Music</option>
+              <option>Sports</option>
+              <option>Tech</option>
+              <option>Business</option>
+              <option>Community</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="event-date">Date</label>
+            <input type="date" id="event-date" required>
+          </div>
+          <div class="field">
+            <label for="event-time">Time</label>
+            <input type="time" id="event-time" required>
+          </div>
+          <div class="field">
+            <label for="event-venue">Venue</label>
+            <input type="text" id="event-venue" required>
+          </div>
+          <div class="field">
+            <label for="event-price">Ticket price (₦)</label>
+            <input type="number" id="event-price" min="0" step="100" required>
+          </div>
+          <div class="field">
+            <label for="event-icon">Icon</label>
+            <input type="text" id="event-icon" maxlength="4" placeholder="e.g. 🎟️">
+          </div>
+          <div class="field event-description-field">
+            <label for="event-description">Description</label>
+            <textarea id="event-description" required></textarea>
+          </div>
+        </div>
+        <div class="event-form-actions">
+          <button type="submit" class="btn btn-primary" id="save-event">Save Event</button>
+          <button type="button" class="btn btn-outline" id="cancel-event-form">Cancel</button>
+        </div>
+      </form>
+      <p class="manager-message" id="manager-message" role="status"></p>
+    </section>
+
+    <div class="search-row">
+      <input type="search" id="search-input" placeholder="Search events by name or venue..." aria-label="Search events">
+    </div>
+
+    <div class="filter-bar" id="filter-bar">
+      <button class="filter-btn active" data-cat="All">All</button>
+      <button class="filter-btn" data-cat="Music">Music</button>
+      <button class="filter-btn" data-cat="Sports">Sports</button>
+      <button class="filter-btn" data-cat="Tech">Tech</button>
+      <button class="filter-btn" data-cat="Business">Business</button>
+      <button class="filter-btn" data-cat="Community">Community</button>
+    </div>
+
+    <div class="event-grid" id="events-grid"></div>
+    <p class="no-results" id="no-results">No events match your search. Try a different keyword or category.</p>
+  </main>
+
+  <footer class="site-footer" style="margin-top:64px;">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h4>Pulse</h4>
+          <p style="font-size:0.9rem; max-width:320px;">A campus event ticketing platform built to help students discover, book, and attend events without the hassle of queues or printed tickets.</p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="team.html">Meet the Team</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Categories</h4>
+          <ul>
+            <li><a href="events.html?cat=Music">Music</a></li>
+            <li><a href="events.html?cat=Sports">Sports</a></li>
+            <li><a href="events.html?cat=Tech">Tech</a></li>
+            <li><a href="events.html?cat=Community">Community</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Pulse Campus Events. Built for IMT 405 Capstone.</span>
+        <span>Made with HTML, CSS &amp; JavaScript</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Ticket purchase modal -->
+  <div class="modal-overlay" id="ticket-modal">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-event-title">
+      <button class="modal-close" onclick="closeTicketModal()" aria-label="Close dialog">&times;</button>
+      <div id="modal-form">
+        <h3 id="modal-event-title">Event Title</h3>
+        <p class="modal-sub" id="modal-event-sub">Date · Time · Venue</p>
+
+        <div class="qty-row">
+          <div>
+            <div style="font-family:var(--font-mono); font-size:0.75rem; text-transform:uppercase; letter-spacing:0.12em; color:var(--slate);">Price per ticket</div>
+            <div style="font-family:var(--font-display); font-size:1.2rem;" id="modal-unit-price">₦0</div>
+          </div>
+          <div class="qty-controls">
+            <button type="button" onclick="changeQty(-1)" aria-label="Decrease quantity">&minus;</button>
+            <span id="qty-value" style="font-family:var(--font-display); font-size:1.2rem; min-width:24px; text-align:center;">1</span>
+            <button type="button" onclick="changeQty(1)" aria-label="Increase quantity">+</button>
+          </div>
+        </div>
+
+        <form id="ticket-form" onsubmit="submitTicketForm(event)">
+          <div class="field" id="buyer-name-field">
+            <label for="buyer-name">Full name</label>
+            <input type="text" id="buyer-name" name="buyer-name" required>
+            <span class="error">Please enter your name.</span>
+          </div>
+          <div class="field" id="buyer-email-field">
+            <label for="buyer-email">Email address</label>
+            <input type="email" id="buyer-email" name="buyer-email" required>
+            <span class="error">Please enter a valid email address.</span>
+          </div>
+
+          <div class="qty-total">
+            <span>Total</span>
+            <span class="amount" id="qty-total-amount">₦0</span>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width:100%;">Confirm Booking</button>
+        </form>
+      </div>
+
+      <div class="confirm-box" id="modal-confirm">
+        <div class="check">✓</div>
+        <h3>Booking confirmed</h3>
+        <p id="confirm-event-name" style="color:var(--slate); margin-top:8px;"></p>
+        <p class="ref" id="confirm-ref"></p>
+        <button class="btn btn-outline" style="margin-top:20px;" onclick="closeTicketModal()">Done</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script>
+    const grid = document.getElementById("events-grid");
+    const noResults = document.getElementById("no-results");
+    const searchInput = document.getElementById("search-input");
+    const filterBar = document.getElementById("filter-bar");
+    const eventForm = document.getElementById("event-form");
+    const toggleEventFormButton = document.getElementById("toggle-event-form");
+    const cancelEventFormButton = document.getElementById("cancel-event-form");
+    const managerMessage = document.getElementById("manager-message");
+
+    let activeCategory = "All";
+
+    // Pre-select category from URL query string (?cat=Music)
+    const params = new URLSearchParams(window.location.search);
+    const catParam = params.get("cat");
+    if (catParam) {
+      activeCategory = catParam;
+    }
+
+    function renderEvents() {
+      const query = searchInput.value.trim().toLowerCase();
+      grid.innerHTML = "";
+
+      const filtered = EVENTS.filter(ev => {
+        const matchesCategory = activeCategory === "All" || ev.category === activeCategory;
+        const matchesQuery =
+          ev.title.toLowerCase().includes(query) ||
+          ev.venue.toLowerCase().includes(query) ||
+          ev.category.toLowerCase().includes(query);
+        return matchesCategory && matchesQuery;
+      });
+
+      if (filtered.length === 0) {
+        noResults.classList.add("show");
+      } else {
+        noResults.classList.remove("show");
+      }
+
+      filtered.forEach(ev => {
+        const card = document.createElement("article");
+        card.className = `ticket-card ${ev.active === false ? "event-inactive" : ""}`;
+        card.innerHTML = `
+          <div class="card-img">
+            <span class="cat-tag">${escapeHTML(ev.category)}</span>
+            ${ev.active === false ? '<span class="status-tag">Inactive</span>' : ""}
+            <span class="icon">${escapeHTML(ev.icon || "🎟️")}</span>
+          </div>
+          <div class="card-body">
+            <h3>${escapeHTML(ev.title)}</h3>
+            <div class="card-meta">${formatDate(ev.date)} · ${escapeHTML(ev.time)} · ${escapeHTML(ev.venue)}</div>
+            <p class="card-desc">${escapeHTML(ev.desc)}</p>
+            <div class="card-footer">
+              <span class="price ${ev.price === 0 ? "free" : ""}">${formatNaira(ev.price)}</span>
+              ${ev.active === false
+                ? '<span class="unavailable-label">Not bookable</span>'
+                : `<button class="btn btn-primary" onclick="openTicketModal('${ev.id}')">Get Tickets</button>`}
+            </div>
+            <div class="card-admin-actions">
+              <button type="button" class="admin-btn" onclick="editEvent('${ev.id}')">Edit</button>
+              <button type="button" class="admin-btn" onclick="toggleEventStatus('${ev.id}')">
+                ${ev.active === false ? "Activate" : "Deactivate"}
+              </button>
+              <button type="button" class="admin-btn admin-btn-danger" onclick="deleteEvent('${ev.id}')">Delete</button>
+            </div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    // Set initial active filter button
+    filterBar.querySelectorAll(".filter-btn").forEach(btn => {
+      if (btn.dataset.cat === activeCategory) btn.classList.add("active");
+      else btn.classList.remove("active");
+
+      btn.addEventListener("click", () => {
+        filterBar.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        activeCategory = btn.dataset.cat;
+        renderEvents();
+      });
+    });
+
+    searchInput.addEventListener("input", renderEvents);
+
+    function openEventForm(event = null) {
+      eventForm.hidden = false;
+      toggleEventFormButton.textContent = event ? "Editing Event" : "Add Event";
+      document.getElementById("event-id").value = event ? event.id : "";
+      document.getElementById("event-title").value = event ? event.title : "";
+      document.getElementById("event-category").value = event ? event.category : "";
+      document.getElementById("event-date").value = event ? event.date : "";
+      document.getElementById("event-time").value = event ? toTimeInput(event.time) : "";
+      document.getElementById("event-venue").value = event ? event.venue : "";
+      document.getElementById("event-price").value = event ? event.price : "";
+      document.getElementById("event-icon").value = event ? event.icon : "";
+      document.getElementById("event-description").value = event ? event.desc : "";
+      document.getElementById("save-event").textContent = event ? "Update Event" : "Save Event";
+      eventForm.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+
+    function closeEventForm() {
+      eventForm.reset();
+      eventForm.hidden = true;
+      toggleEventFormButton.textContent = "Add Event";
+      document.getElementById("event-id").value = "";
+    }
+
+    function toTimeInput(time) {
+      const match = time.match(/^(\d{1,2}):(\d{2})\s*(AM|PM)$/i);
+      if (!match) return time;
+      let hour = Number(match[1]);
+      if (match[3].toUpperCase() === "PM" && hour !== 12) hour += 12;
+      if (match[3].toUpperCase() === "AM" && hour === 12) hour = 0;
+      return `${String(hour).padStart(2, "0")}:${match[2]}`;
+    }
+
+    function displayTime(time) {
+      const [hours, minutes] = time.split(":").map(Number);
+      const suffix = hours >= 12 ? "PM" : "AM";
+      const hour = hours % 12 || 12;
+      return `${hour}:${String(minutes).padStart(2, "0")} ${suffix}`;
+    }
+
+    function showManagerMessage(message) {
+      managerMessage.textContent = message;
+      managerMessage.classList.add("show");
+      window.setTimeout(() => managerMessage.classList.remove("show"), 3000);
+    }
+
+    function editEvent(eventId) {
+      const event = EVENTS.find(item => item.id === eventId);
+      if (event) openEventForm(event);
+    }
+
+    function toggleEventStatus(eventId) {
+      const event = EVENTS.find(item => item.id === eventId);
+      if (!event) return;
+      event.active = event.active === false;
+      saveEvents();
+      renderEvents();
+      showManagerMessage(`${event.title} is now ${event.active ? "active" : "inactive"}.`);
+    }
+
+    function deleteEvent(eventId) {
+      const event = EVENTS.find(item => item.id === eventId);
+      if (!event || !window.confirm(`Delete "${event.title}" permanently?`)) return;
+      EVENTS = EVENTS.filter(item => item.id !== eventId);
+      saveEvents();
+      renderEvents();
+      showManagerMessage("Event deleted.");
+    }
+
+    toggleEventFormButton.addEventListener("click", () => {
+      if (eventForm.hidden) openEventForm();
+      else closeEventForm();
+    });
+
+    cancelEventFormButton.addEventListener("click", closeEventForm);
+
+    eventForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const eventId = document.getElementById("event-id").value;
+      const existingEvent = EVENTS.find(item => item.id === eventId);
+      const eventData = {
+        id: eventId || `evt-${Date.now()}`,
+        title: document.getElementById("event-title").value.trim(),
+        category: document.getElementById("event-category").value,
+        date: document.getElementById("event-date").value,
+        time: displayTime(document.getElementById("event-time").value),
+        venue: document.getElementById("event-venue").value.trim(),
+        price: Number(document.getElementById("event-price").value),
+        icon: document.getElementById("event-icon").value.trim() || "🎟️",
+        desc: document.getElementById("event-description").value.trim(),
+        active: existingEvent ? existingEvent.active !== false : true
+      };
+
+      if (existingEvent) {
+        EVENTS = EVENTS.map(item => item.id === eventId ? eventData : item);
+      } else {
+        EVENTS.push(eventData);
+      }
+
+      saveEvents();
+      closeEventForm();
+      renderEvents();
+      showManagerMessage(existingEvent ? "Event updated." : "Event added.");
+    });
+
+    renderEvents();
+  </script>
+</body>
+</html>

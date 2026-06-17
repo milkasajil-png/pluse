@@ -407,6 +407,9 @@ section { padding: 72px 0; }
 .ticket-card .card-img {
   height: 170px;
   background: var(--ink);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -427,9 +430,7 @@ section { padding: 72px 0; }
   border-radius: var(--radius);
 }
 
-.ticket-card .card-img .icon {
-  font-size: 2.6rem;
-}
+
 
 .ticket-card .card-body {
   padding: 20px 22px 22px;

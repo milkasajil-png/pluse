@@ -6,16 +6,17 @@ Pulse is a static event management and ticketing website built for the IMT 405 W
 
 ## Team Members and Roles
 
-| Name                   | Role                | ID Number       |
-| ---------------------- | ------------------- | --------------- |
-| Hauwa Ahmed            | Content Lead        | DL/IMT/23D/0126 |
-| Saidu Abubakar         | Content Lead        | DL/IMT/23D/0127 |
-| Hauwa Usman            | UI Designer         | DL/IMT/23D/0140 |
-| Umar Yahaya Mohammed   | Content Lead        | DL/IMT/23D/0151 |
-| Talatu Umoru           | Content Lead        | DL/IMT/21U/0110 |
-| Safiya Ndottiwa Misawa | Project Contributor | DL/IMT/23D/0134 |
-| Sajil Sani             | Team Member         | DL/IMT/23D/0120 |
-| Yahaya Daniel          | Frontend Developer  | DL/IMT/21U/0096 |
+| Name                   | Role                                           | ID Number       |
+| ---------------------- | ---------------------------------------------- | --------------- |
+| Hauwa Ahmed            | Content Lead                                   | DL/IMT/23D/0126 |
+| Saidu Abubakar         | Content Lead                                   | DL/IMT/23D/0127 |
+| Hauwa Usman            | UI Designer                                    | DL/IMT/23D/0140 |
+| Umar Yahaya Mohammed   | Content Lead                                   | DL/IMT/23D/0151 |
+| Talatu Umoru           | Content Lead                                   | DL/IMT/21U/0110 |
+| Safiya Ndottiwa Misawa | Project Contributor                            | DL/IMT/23D/0134 |
+| Sajil Sani             | Team Member                                    | DL/IMT/23D/0120 |
+| Yahaya Daniel          | Frontend Developer                             | DL/IMT/21U/0096 |
+| Ladi Garba             | UI Designer, Frontend Developer & Content Lead | DL/IMT/23D/0119 |
 
 ## Technologies Used
 

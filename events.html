@@ -77,7 +77,7 @@
           </div>
           <div class="field">
             <label for="event-icon">Icon</label>
-            <input type="text" id="event-icon" maxlength="4" placeholder="e.g. 🎟️">
+            <input type="url" id="event-icon" placeholder="Image URL (e.g. https://images.unsplash.com/...)">
           </div>
           <div class="field event-description-field">
             <label for="event-description">Description</label>
@@ -236,10 +236,9 @@
         const card = document.createElement("article");
         card.className = `ticket-card ${ev.active === false ? "event-inactive" : ""}`;
         card.innerHTML = `
-          <div class="card-img">
+          <div class="card-img" style="background-image: url('${escapeHTML(ev.icon)}');">
             <span class="cat-tag">${escapeHTML(ev.category)}</span>
-            ${ev.active === false ? '<span class="status-tag">Inactive</span>' : ""}
-            <span class="icon">${escapeHTML(ev.icon || "🎟️")}</span>
+            ${ev.active === false ? '<span class="status-tag">Inactive</span>' : ""} 
           </div>
           <div class="card-body">
             <h3>${escapeHTML(ev.title)}</h3>

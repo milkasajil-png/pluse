@@ -12,7 +12,7 @@ const DEFAULT_EVENTS = [
     time: "4:00 PM",
     venue: "Main Amphitheatre, University Square",
     price: 1500,
-    icon: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&h=400&fit=crop&crop=center",
+    icon: "images/campus-beat.jpeg",
     desc: "An open-air showcase of student bands, DJs, and spoken word artists closing out the semester."
   },
   {
@@ -23,7 +23,7 @@ const DEFAULT_EVENTS = [
     time: "6:00 PM",
     venue: "Innovation Hub, Block C",
     price: 0,
-    icon: "https://images.unsplash.com/photo-1556075798-4825dfaaf498?w=400&h=400&fit=crop&crop=center",
+    icon: "images/businees.jpeg",
     desc: "Five early-stage student founders pitch to a panel of local investors. Free entry, refreshments included."
   },
   {
@@ -34,7 +34,7 @@ const DEFAULT_EVENTS = [
     time: "2:30 PM",
     venue: "Sports Complex, Pitch A",
     price: 500,
-    icon: "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=400&h=400&fit=crop&crop=center",
+    icon: "images/sport.jpeg",
     desc: "The championship match between Engineering and Sciences faculties. Tickets include a seat in the covered stand."
   },
   {
@@ -45,7 +45,7 @@ const DEFAULT_EVENTS = [
     time: "10:00 AM",
     venue: "Auditorium B, Faculty of Computing",
     price: 1000,
-    icon: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=400&h=400&fit=crop&crop=center",
+    icon: "images/tech.jpeg",
     desc: "A half-day conference featuring talks from local AI practitioners on practical applications across industries."
   },
   {
@@ -56,7 +56,7 @@ const DEFAULT_EVENTS = [
     time: "5:00 PM",
     venue: "Art Gallery, Cultural Centre",
     price: 2000,
-    icon: "https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=400&h=400&fit=crop&crop=center",
+    icon: "images/art.jpg",
     desc: "An evening exhibition of student artwork with proceeds supporting the campus literacy outreach programme."
   },
   {
@@ -67,7 +67,7 @@ const DEFAULT_EVENTS = [
     time: "9:00 AM",
     venue: "Student Centre, Room 204",
     price: 0,
-    icon: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=400&fit=crop&crop=center",
+    icon: "images/wellnes.webp",
     desc: "A free morning session on stress management and mindfulness practices for students ahead of exams."
   },
   {
@@ -78,7 +78,7 @@ const DEFAULT_EVENTS = [
     time: "7:30 PM",
     venue: "Multipurpose Hall",
     price: 1200,
-    icon: "https://images.unsplash.com/photo-1516280440614-37939bbacd81?w=400&h=400&fit=crop&crop=center",
+    icon: "images/standup.jpeg",
     desc: "A night of stand-up comedy featuring student performers and a special guest comedian."
   },
   {
@@ -89,18 +89,40 @@ const DEFAULT_EVENTS = [
     time: "3:00 PM",
     venue: "Indoor Sports Hall",
     price: 800,
-    icon: "https://images.unsplash.com/photo-1546519638-68e109498ffc?w=400&h=400&fit=crop&crop=center",
+    icon: "images/basketball.jpeg",
     desc: "Alumni return to take on the current varsity team in a friendly but fiercely competitive match."
   }
 ];
 
 const EVENTS_STORAGE_KEY = "pulse-events";
+const TEAM_IMAGE_PATHS = new Set([
+  "images/sajil.jpeg",
+  "images/talatu.jpeg",
+  "images/safiya.jpeg"
+]);
+
+function syncDefaultEventImages(events) {
+  return events.map(event => {
+    const defaultEvent = DEFAULT_EVENTS.find(item => item.id === event.id);
+    const shouldUseLocalImage =
+      defaultEvent &&
+      (!event.icon ||
+        event.icon.includes("images.unsplash.com") ||
+        TEAM_IMAGE_PATHS.has(event.icon));
+
+    return {
+      ...event,
+      icon: shouldUseLocalImage ? defaultEvent.icon : event.icon,
+      active: event.active !== false
+    };
+  });
+}
 
 function getStoredEvents() {
   try {
     const stored = JSON.parse(localStorage.getItem(EVENTS_STORAGE_KEY));
     if (!Array.isArray(stored)) return null;
-    return stored.map(event => ({ ...event, active: event.active !== false }));
+    return syncDefaultEventImages(stored);
   } catch (error) {
     return null;
   }

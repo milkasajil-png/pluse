@@ -76,8 +76,8 @@
             <input type="number" id="event-price" min="0" step="100" required>
           </div>
           <div class="field">
-            <label for="event-icon">Icon</label>
-            <input type="url" id="event-icon" placeholder="Image URL (e.g. https://images.unsplash.com/...)">
+            <label for="event-icon">Image path</label>
+            <input type="text" id="event-icon" placeholder="images/campus-beat.jpeg">
           </div>
           <div class="field event-description-field">
             <label for="event-description">Description</label>
@@ -365,7 +365,7 @@
         time: displayTime(document.getElementById("event-time").value),
         venue: document.getElementById("event-venue").value.trim(),
         price: Number(document.getElementById("event-price").value),
-        icon: document.getElementById("event-icon").value.trim() || "🎟️",
+        icon: document.getElementById("event-icon").value.trim() || "images/campus-beat.jpeg",
         desc: document.getElementById("event-description").value.trim(),
         active: existingEvent ? existingEvent.active !== false : true
       };

@@ -257,9 +257,8 @@
       const card = document.createElement("article");
       card.className = "ticket-card";
       card.innerHTML = `
-        <div class="card-img">
+        <div class="card-img" style="background-image: url('${escapeHTML(ev.icon)}');">
           <span class="cat-tag">${escapeHTML(ev.category)}</span>
-          <span class="icon">${escapeHTML(ev.icon)}</span>
         </div>
         <div class="card-body">
           <h3>${escapeHTML(ev.title)}</h3>
